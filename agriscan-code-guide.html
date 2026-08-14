@@ -116,6 +116,10 @@
     border:1px solid var(--border-dim); color:var(--green-300); padding:1px 7px; border-radius:6px;
   }
 
+  /* กันข้อความยาว / URL ยาวล้นจอเล็ก */
+  code.inline { overflow-wrap:anywhere; }
+  p, li, td, th, .callout, .c-desc, .lead, .sub-label { overflow-wrap:anywhere; }
+
   ul.check { list-style:none; }
   ul.check li { position:relative; padding-left:26px; margin-bottom:10px; font-size:0.87rem; color:var(--text-secondary); font-weight:300; }
   ul.check li::before { content:'✓'; position:absolute; left:0; top:1px; color:var(--green-400); font-weight:700; font-size:0.9rem; }
@@ -152,6 +156,30 @@
   footer p { font-size:0.74rem; color:var(--text-muted); }
   .btn { display:inline-flex; align-items:center; gap:8px; padding:9px 20px; border-radius:var(--radius-pill); border:1px solid var(--border-glow); background:rgba(22,101,52,0.3); color:var(--green-300); font-family:var(--font-body); font-size:0.82rem; cursor:pointer; text-decoration:none; transition:all .2s; }
   .btn:hover { background:rgba(22,101,52,0.5); box-shadow:0 0 20px rgba(34,197,94,0.2); }
+
+  /* ═════════════ Responsive ═════════════ */
+  /* nav หนึ่งแถวเลื่อนแนวนอน ตั้งแต่ขนาด tablet ลงมา */
+  @media (max-width:900px) {
+    .topnav-inner { padding:8px 14px; }
+    .topnav-links {
+      flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;
+      scrollbar-width:none; padding-bottom:2px;
+    }
+    .topnav-links::-webkit-scrollbar { display:none; }
+    .topnav-links a { white-space:nowrap; }
+  }
+
+  /* มือถือ — ระยะห่างกระชับขึ้น */
+  @media (max-width:640px) {
+    .hero { padding:40px 0 24px; }
+    .page { padding:0 14px 64px; }
+    section { margin-top:56px; }
+    pre { padding:14px 14px; font-size:0.72rem; }
+    .card { padding:18px; }
+    .callout { padding:14px 16px; }
+    .wf-step { gap:12px; }
+    .wf-step .wf-no { width:28px; height:28px; font-size:0.8rem; }
+  }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }

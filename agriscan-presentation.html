@@ -271,6 +271,10 @@
     color:var(--green-300); padding:1px 7px; border-radius:6px;
   }
 
+  /* กันข้อความยาว / URL ยาวล้นจอเล็ก */
+  code.inline { overflow-wrap:anywhere; }
+  p, li, td, th, .callout, .c-desc, .lead, .sub-label { overflow-wrap:anywhere; }
+
   /* ═════════════ Chain (fallback) ═════════════ */
   .chain { display:flex; flex-direction:column; gap:10px; margin-top:8px; }
   .chain-step {
@@ -389,7 +393,8 @@
   .reveal.in { opacity:1; transform:none; }
 
   /* ═════════════ Responsive ═════════════ */
-  @media (max-width:640px) {
+  /* Flow เปลี่ยนเป็นแนวตั้ง + nav หนึ่งแถวเลื่อนแนวนอน ตั้งแต่ขนาด tablet ลงมา */
+  @media (max-width:900px) {
     .flow { flex-direction:column; align-items:center; gap:10px; }
     .flow-conn { flex:0 0 26px; width:2px; min-height:26px; }
     .flow-conn::before { width:2px; height:100%; }
@@ -400,6 +405,28 @@
     }
     .chain-step { flex-wrap:wrap; }
     .chain-step .why { margin-left:0; text-align:left; width:100%; }
+    .topnav-inner { padding:8px 14px; }
+    .topnav-links {
+      flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;
+      scrollbar-width:none; padding-bottom:2px;
+    }
+    .topnav-links::-webkit-scrollbar { display:none; }
+    .topnav-links a { white-space:nowrap; }
+  }
+
+  /* มือถือ — ระยะห่างกระชับขึ้น */
+  @media (max-width:640px) {
+    .hero { padding:40px 0 24px; }
+    .page { padding:0 14px 64px; }
+    section { margin-top:56px; }
+    .flow-wrap { padding:22px 14px 18px; }
+    .flow-node { padding:14px 8px 10px; }
+    .pres-step { gap:14px; }
+    .pres-step .big { width:38px; height:38px; font-size:1.1rem; }
+    pre, .tree { padding:14px 14px; }
+    .card { padding:18px; }
+    .callout { padding:14px 16px; }
+    .stats { grid-template-columns:repeat(2, 1fr); }
   }
 
   @media (prefers-reduced-motion: reduce) {
